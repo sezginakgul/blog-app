@@ -8,8 +8,22 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  set,
+  push,
+  onValue,
+  update,
+  remove,
+} from "firebase/database";
 import { useEffect, useState } from "react";
+import {
+  toastBlueNotify,
+  toastGreenNotify,
+  toastRedNotify,
+  toastYellowNotify,
+} from "./toastNotify";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_apiKey,
@@ -18,6 +32,7 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_storageBucket,
   messagingSenderId: process.env.REACT_APP_messagingSenderId,
   appId: process.env.REACT_APP_appId,
+  databaseURL: process.env.REACT_APP_databaseURL,
 };
 
 // Initialize Firebase
@@ -30,13 +45,13 @@ export const createUser = async (values, navigate) => {
   const { email, password } = values;
   try {
     await createUserWithEmailAndPassword(auth, email, password);
-    console.log("signin", values);
+    // console.log("signin", values);
     navigate("/");
-    // toastSuccessNotify("Registered successfully!");
+    toastGreenNotify("Registered successfully!");
     // console.log(userCredential);
   } catch (error) {
-    // toastErrorNotify(error.message);
-    alert(error.message);
+    toastRedNotify(error.message);
+    // alert(error.message);
   }
 };
 
@@ -47,10 +62,10 @@ export const signIn = async (values, navigate) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
     navigate("/");
-    // toastSuccessNotify("Logged in successfully!");
+    toastGreenNotify("Logged in successfully!");
   } catch (error) {
-    // toastErrorNotify(error.message);
-    alert(error.message);
+    toastRedNotify(error.message);
+    // alert(error.message);
   }
 };
 
@@ -62,7 +77,7 @@ export const userObserver = (setCurrentUser) => {
     if (user) {
       const { email } = user;
       setCurrentUser({ email: email });
-      console.log(user);
+      // console.log(user);
       // console.log(user);
     } else {
       setCurrentUser(false);
@@ -75,24 +90,25 @@ export const userObserver = (setCurrentUser) => {
 export const logOut = () => {
   const auth = getAuth(app);
   signOut(auth);
-  //   toastSuccessNotify("Logged out successfully!");
+  toastYellowNotify("Logged out successfully!");
 };
 
 //! Signin Google
-export const signUpWithGoogle = (navigate, setCurrentUser) => {
+export const signUpWithGoogle = (navigate) => {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
   //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
   signInWithPopup(auth, provider)
     .then((result) => {
-      // console.log("google", result.user.email);
+      console.log("google", result.user.email);
       navigate("/");
-      setCurrentUser(result.user.email);
-      //   toastSuccessNotify("Logged in successfully!");
+      // setCurrentUser(result.user.email);
+      toastGreenNotify("Logged in successfully!");
     })
     .catch((error) => {
       // Handle Errors here.
       // console.log(error);
+      toastRedNotify(error.message);
     });
 };
 
@@ -108,10 +124,8 @@ export const AddBlog = (values, currentUser) => {
     content: values.content,
     email: currentUser.email,
     createdOn: new Date().toDateString(),
-    // createdOn: `${new Date().getDate()}/${
-    //   new Date().getMonth() + 1
-    // }/${new Date().getFullYear()}`,
   });
+  toastBlueNotify("Blog added auccessfully");
 };
 
 export const useFetch = () => {
@@ -133,4 +147,19 @@ export const useFetch = () => {
     });
   }, []);
   return { isLoading, blogList };
+};
+
+export const UpdatedBlog = (info) => {
+  const db = getDatabase(app);
+
+  const updates = {};
+  updates["user/" + info.id] = info;
+  toastBlueNotify("Blog updated successfully");
+  return update(ref(db), updates);
+};
+
+export const DeleteBlog = (id) => {
+  const db = getDatabase(app);
+  remove(ref(db, "user/" + id));
+  toastRedNotify("Blog deleted successfully");
 };

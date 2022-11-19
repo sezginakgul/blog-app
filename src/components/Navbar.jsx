@@ -32,7 +32,7 @@ const NavBar = () => {
 
   const CloseLogin = () => {
     logOut();
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -78,53 +78,46 @@ const NavBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {currentUser && (
+              <Box onClick={() => navigate("/")}>
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography
-                    textAlign="center"
-                    onClick={() => navigate("/profile")}
-                  >
-                    Profile
-                  </Typography>
+                  <Typography textAlign="center">Home</Typography>
                 </MenuItem>
+              </Box>
+              {currentUser && (
+                <Box onClick={() => navigate("/profile")}>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">Profile</Typography>
+                  </MenuItem>
+                </Box>
               )}
 
               {currentUser && (
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography
-                    textAlign="center"
-                    onClick={() => navigate("/newblog")}
-                  >
-                    New
-                  </Typography>
-                </MenuItem>
+                <Box onClick={() => navigate("/newblog")}>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">New</Typography>
+                  </MenuItem>
+                </Box>
               )}
               {currentUser ? (
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" onClick={CloseLogin}>
-                    Logout
-                  </Typography>
-                </MenuItem>
+                <Box onClick={CloseLogin}>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">Logout</Typography>
+                  </MenuItem>
+                </Box>
               ) : (
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography
-                    textAlign="center"
-                    onClick={() => navigate("/login")}
-                  >
-                    Login
-                  </Typography>
-                </MenuItem>
+                <Box onClick={() => navigate("/login")}>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">Login</Typography>
+                  </MenuItem>
+                </Box>
               )}
 
               {!currentUser && (
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography
-                    textAlign="center"
-                    onClick={() => navigate("/register")}
-                  >
-                    Register
-                  </Typography>
-                </MenuItem>
+                <Box onClick={() => navigate("/register")}>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">Register</Typography>
+                  </MenuItem>
+                </Box>
               )}
             </Menu>
           </Box>

@@ -9,6 +9,7 @@ import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import UpdateBlog from "../pages/UpdateBlog";
 import NavBar from "../components/Navbar";
+import PrivateRouter from "./PrivateRouter";
 
 const AppRouter = () => {
   return (
@@ -17,7 +18,9 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
-        <Route path="/details/:id" element={<Details />} />
+        <Route path="/details/:id" element={<PrivateRouter />}>
+          <Route path="" element={<Details />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/newblog" element={<NewBlog />} />
         <Route path="/profile" element={<Profile />} />

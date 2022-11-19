@@ -9,6 +9,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useLoginContext } from "../contexts/AuthContext";
+import { DeleteBlog } from "../helpers/firebase";
 
 const Details = () => {
   const { state: data } = useLocation();
@@ -16,11 +17,18 @@ const Details = () => {
   const { currentUser } = useLoginContext();
   console.log("currentUser", currentUser.email);
   console.log("dataUser", data.email);
+
+  const blogDeleteHandler = () => {
+    DeleteBlog(data.id);
+    navigate("/");
+  };
+
   return (
     <Box mt={5} mx={3}>
       <Card
         sx={{
-          maxWidth: 1000,
+          maxWidth: 800,
+
           mx: "auto",
         }}
         align="center"
@@ -31,7 +39,11 @@ const Details = () => {
             component="img"
             image={data.imageUrl}
             alt="blogImg"
-            sx={{ maxHeight: 700, padding: "5" }}
+            sx={{
+              // maxHeight: 600,
+              padding: "5",
+              // objectFit: "cover",
+            }}
           />
         </Box>
 
@@ -59,12 +71,20 @@ const Details = () => {
         </CardActions>
       </Card>
 
-      {currentUser.email == data.email && (
+      {currentUser.email === data.email && (
         <Box sx={{ display: "flex", justifyContent: "space-around", mt: 2 }}>
-          <Button variant="contained" color="secondary">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => navigate("/update", { state: data })}
+          >
             Edit
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={blogDeleteHandler}
+          >
             Delete
           </Button>
         </Box>

@@ -10,6 +10,7 @@ import { Formik, Form } from "formik";
 import * as yup from "yup";
 import { createUser, signUpWithGoogle } from "../helpers/firebase";
 import { useLoginContext } from "../contexts/AuthContext";
+import GoogleLogo from "../assets/google.png";
 
 const loginSchema = yup.object().shape({
   email: yup
@@ -121,11 +122,7 @@ const Register = () => {
                   }}
                   onClick={handleGoogleProvider}
                 >
-                  <img
-                    src="https://www.freepnglogos.com/uploads/google-logo-png/file-google-logo-svg-wikimedia-commons-23.png"
-                    alt="google"
-                    width={80}
-                  />
+                  <img src={GoogleLogo} alt="google" width={105} />
                 </Button>
               </Box>
             </Form>
