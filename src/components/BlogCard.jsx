@@ -23,7 +23,7 @@ const BlogCard = () => {
   const { currentUser } = useLoginContext();
   // console.log("BlogList", blogList);
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }} mt={5} mx={3}>
+    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }} mt={4} mb={4} p={2}>
       {isLoading && (
         <Box
           mx="auto"

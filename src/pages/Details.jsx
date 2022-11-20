@@ -24,7 +24,7 @@ const Details = () => {
   };
 
   return (
-    <Box mt={5} mx={3}>
+    <Box mt={3} mb={5} p={2}>
       <Card
         sx={{
           maxWidth: 800,
@@ -71,7 +71,15 @@ const Details = () => {
       </Card>
 
       {currentUser.email === data.email && (
-        <Box sx={{ display: "flex", justifyContent: "space-around", mt: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            mt: 1,
+            mx: "auto",
+            maxWidth: 800,
+          }}
+        >
           <Button
             variant="contained"
             color="success"

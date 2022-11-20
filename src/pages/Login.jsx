@@ -125,7 +125,6 @@ const Login = () => {
                   Sign In
                 </Button>
                 <Button
-                  type="submit"
                   fullWidth
                   color="success"
                   variant="contained"

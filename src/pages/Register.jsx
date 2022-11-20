@@ -9,7 +9,6 @@ import Container from "@mui/material/Container";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 import { createUser, signUpWithGoogle } from "../helpers/firebase";
-import { useLoginContext } from "../contexts/AuthContext";
 import GoogleLogo from "../assets/google.png";
 
 const loginSchema = yup.object().shape({
@@ -30,7 +29,6 @@ const loginSchema = yup.object().shape({
 
 const Register = () => {
   const navigate = useNavigate();
-  const { setCurrentUser } = useLoginContext();
 
   const Copyright = () => {
     return (
@@ -117,7 +115,6 @@ const Register = () => {
                   Register
                 </Button>
                 <Button
-                  type="submit"
                   color="success"
                   fullWidth
                   variant="contained"

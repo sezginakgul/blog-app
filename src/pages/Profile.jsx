@@ -20,7 +20,7 @@ const Profile = () => {
           alignItems: "center",
         }}
       >
-        <Card sx={{ minWidth: 275, mx: "auto", my: "auto" }}>
+        <Card sx={{ minWidth: 200, mx: "auto", my: "auto" }}>
           <CardContent>
             <Typography sx={{ fontSize: 40 }} gutterBottom align="center">
               Profile
