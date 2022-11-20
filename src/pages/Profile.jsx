@@ -39,7 +39,12 @@ const Profile = () => {
           </CardContent>
         </Card>
         <Box mt={3}>
-          <Button variant="contained" size="small" onClick={() => navigate(-1)}>
+          <Button
+            variant="contained"
+            color="success"
+            size="small"
+            onClick={() => navigate(-1)}
+          >
             Back
           </Button>
         </Box>

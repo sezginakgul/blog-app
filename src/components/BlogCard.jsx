@@ -14,6 +14,7 @@ import { CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useLoginContext } from "../contexts/AuthContext";
 import { toastRedNotify } from "../helpers/toastNotify";
+import ModeCommentOutlined from "@mui/icons-material/ModeCommentOutlined";
 
 const BlogCard = () => {
   // console.log(new Date().toDateString());
@@ -29,7 +30,7 @@ const BlogCard = () => {
           height="85vh"
           sx={{ display: "flex", alignItems: "center" }}
         >
-          <CircularProgress color="secondary" size={70} />
+          <CircularProgress color="success" size={70} />
         </Box>
       )}
       {!isLoading &&
@@ -38,8 +39,10 @@ const BlogCard = () => {
           return (
             <Card
               sx={{
-                width: 340,
+                width: 350,
                 mx: "auto",
+                bgcolor: "#eeeeee34",
+                borderRadius: "10px",
               }}
               key={id}
               align="center"
@@ -47,8 +50,7 @@ const BlogCard = () => {
               <Box
                 sx={{
                   "&:hover": {
-                    // opacity: 0.5,
-                    backgroundColor: "#eee",
+                    backgroundColor: "#d8dfe4",
                     cursor: "pointer",
                     transition: "all .5s",
                   },
@@ -66,7 +68,7 @@ const BlogCard = () => {
                   image={imageUrl}
                   alt="blogImg"
                   sx={{
-                    height: "200px",
+                    height: "220px",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
@@ -87,13 +89,16 @@ const BlogCard = () => {
                 >
                   {content}
                 </Typography>
-                <Typography variant="body1" color="text">
+                <Typography variant="body1" color="text" mt={2}>
                   {email}
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="comment">
+                  <ModeCommentOutlined />
                 </IconButton>
                 <IconButton aria-label="share">
                   <ShareIcon />

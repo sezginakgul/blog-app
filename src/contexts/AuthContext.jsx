@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(false);
-  console.log("currentUserAuth", currentUser);
+  // console.log("currentUserAuth", currentUser);
   useEffect(() => {
     userObserver(setCurrentUser);
   }, []);

@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
-import About from "../pages/About";
 import Details from "../pages/Details";
 import Login from "../pages/Login";
 import NewBlog from "../pages/NewBlog";
@@ -17,7 +16,6 @@ const AppRouter = () => {
       <NavBar />
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/about" element={<About />} />
         <Route path="/details/:id" element={<PrivateRouter />}>
           <Route path="" element={<Details />} />
         </Route>

@@ -23,7 +23,7 @@ const newBlogSchema = yup.object().shape({
 
 const UpdateBlog = () => {
   const { state: data } = useLocation();
-  console.log("updateBlog", data);
+  // console.log("updateBlog", data);
   const navigate = useNavigate();
   return (
     <Container component="main" maxWidth="xs" sx={{ textAlign: "start" }}>
@@ -51,7 +51,7 @@ const UpdateBlog = () => {
           }}
           validationSchema={newBlogSchema}
           onSubmit={(values, actions) => {
-            console.log("NewBlog", values);
+            // console.log("NewBlog", values);
             UpdatedBlog(values);
             navigate("/");
           }}
@@ -61,6 +61,7 @@ const UpdateBlog = () => {
               <Box sx={{ mt: 5 }}>
                 <TextField
                   fullWidth
+                  color="success"
                   label="Title"
                   name="title"
                   id="title"
@@ -75,6 +76,7 @@ const UpdateBlog = () => {
                 <TextField
                   sx={{ my: 2 }}
                   fullWidth
+                  color="success"
                   label="ImageUrl"
                   name="imageUrl"
                   id="imageUrl"
@@ -88,6 +90,7 @@ const UpdateBlog = () => {
 
                 <TextField
                   fullWidth
+                  color="success"
                   label="Content"
                   name="content"
                   id="content"
@@ -101,6 +104,7 @@ const UpdateBlog = () => {
                 />
                 <Button
                   type="submit"
+                  color="success"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}

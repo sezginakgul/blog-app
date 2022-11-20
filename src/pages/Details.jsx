@@ -15,8 +15,8 @@ const Details = () => {
   const { state: data } = useLocation();
   const navigate = useNavigate();
   const { currentUser } = useLoginContext();
-  console.log("currentUser", currentUser.email);
-  console.log("dataUser", data.email);
+  // console.log("currentUser", currentUser.email);
+  // console.log("dataUser", data.email);
 
   const blogDeleteHandler = () => {
     DeleteBlog(data.id);
@@ -28,7 +28,8 @@ const Details = () => {
       <Card
         sx={{
           maxWidth: 800,
-
+          bgcolor: "#eeeeee34",
+          borderRadius: "10px",
           mx: "auto",
         }}
         align="center"
@@ -40,32 +41,30 @@ const Details = () => {
             image={data.imageUrl}
             alt="blogImg"
             sx={{
-              // maxHeight: 600,
               padding: "5",
-              // objectFit: "cover",
+              maxInlineSize: "500px",
+              bbackgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
             }}
           />
         </Box>
 
         <CardContent>
-          <Typography
-            sx={{
-              overflow: "hidden",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-            }}
-            variant="body2"
-            color="text.secondary"
-          >
+          <Typography variant="subtitle2" color="text.secondary">
             {data.content}
           </Typography>
-          <Typography variant="body1" color="text">
+          <Typography variant="body1" color="text" mt={2}>
             {data.email}
           </Typography>
         </CardContent>
         <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-          <Button variant="contained" size="small" onClick={() => navigate(-1)}>
+          <Button
+            variant="contained"
+            color="success"
+            size="small"
+            onClick={() => navigate(-1)}
+          >
             Back
           </Button>
         </CardActions>
@@ -75,14 +74,14 @@ const Details = () => {
         <Box sx={{ display: "flex", justifyContent: "space-around", mt: 2 }}>
           <Button
             variant="contained"
-            color="secondary"
+            color="success"
             onClick={() => navigate("/update", { state: data })}
           >
             Edit
           </Button>
           <Button
             variant="contained"
-            color="secondary"
+            color="success"
             onClick={blogDeleteHandler}
           >
             Delete

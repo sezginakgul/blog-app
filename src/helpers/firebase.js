@@ -100,7 +100,7 @@ export const signUpWithGoogle = (navigate) => {
   //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
   signInWithPopup(auth, provider)
     .then((result) => {
-      console.log("google", result.user.email);
+      // console.log("google", result.user.email);
       navigate("/");
       // setCurrentUser(result.user.email);
       toastGreenNotify("Logged in successfully!");

@@ -81,6 +81,7 @@ const Register = () => {
                 <TextField
                   sx={{ my: 2 }}
                   fullWidth
+                  color="success"
                   label="Email"
                   name="email"
                   id="email"
@@ -94,6 +95,7 @@ const Register = () => {
                 />
                 <TextField
                   fullWidth
+                  color="success"
                   label="Password"
                   name="password"
                   id="password"
@@ -107,6 +109,7 @@ const Register = () => {
                 />
                 <Button
                   type="submit"
+                  color="success"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
@@ -115,6 +118,7 @@ const Register = () => {
                 </Button>
                 <Button
                   type="submit"
+                  color="success"
                   fullWidth
                   variant="contained"
                   sx={{

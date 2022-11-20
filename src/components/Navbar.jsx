@@ -9,12 +9,11 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { useState } from "react";
-import BlogLogo from "../assets/blog.png";
 import { useLoginContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../helpers/firebase";
+import Logo from "../assets/logo.png";
 
 const NavBar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -36,25 +35,22 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" color="success">
       <Container maxWidth="xl">
         <Toolbar
           disableGutters
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
-          <AdbIcon
-            sx={{ display: { xs: "flex" }, mr: 1 }}
+          <img
+            src={Logo}
+            alt="logo"
+            width={80}
+            style={{
+              display: { xs: "flex" },
+              mr: 1,
+            }}
             onClick={() => navigate("/")}
           />
-
-          <Box sx={{ display: { xs: "flex" } }}>
-            <img
-              src={BlogLogo}
-              alt=""
-              width="150px"
-              onClick={() => navigate("/")}
-            />
-          </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

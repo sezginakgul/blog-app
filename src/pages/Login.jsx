@@ -89,6 +89,7 @@ const Login = () => {
                 <TextField
                   sx={{ my: 2 }}
                   fullWidth
+                  color="success"
                   label="Email"
                   name="email"
                   id="email"
@@ -102,6 +103,7 @@ const Login = () => {
                 />
                 <TextField
                   fullWidth
+                  color="success"
                   label="Password"
                   name="password"
                   id="password"
@@ -116,6 +118,7 @@ const Login = () => {
                 <Button
                   type="submit"
                   fullWidth
+                  color="success"
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
@@ -124,6 +127,7 @@ const Login = () => {
                 <Button
                   type="submit"
                   fullWidth
+                  color="success"
                   variant="contained"
                   sx={{
                     mb: 2,
@@ -138,7 +142,9 @@ const Login = () => {
         </Formik>
 
         <Box sx={{ textAlign: "center", mb: 1 }}>
-          <Link to="/register">Do you have not an account?</Link>
+          <Link to="/register" color="success">
+            Do you have not an account?
+          </Link>
         </Box>
       </Box>
       <Copyright sx={{ mt: 10, mb: 4 }} />
