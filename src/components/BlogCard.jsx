@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useLoginContext } from "../contexts/AuthContext";
 import { toastRedNotify } from "../helpers/toastNotify";
 import ModeCommentOutlined from "@mui/icons-material/ModeCommentOutlined";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const BlogCard = () => {
   // console.log(new Date().toDateString());
@@ -99,6 +100,9 @@ const BlogCard = () => {
                 </IconButton>
                 <IconButton aria-label="comment">
                   <ModeCommentOutlined />
+                </IconButton>
+                <IconButton aria-label="visibility">
+                  <VisibilityIcon />
                 </IconButton>
                 <IconButton aria-label="share">
                   <ShareIcon />
